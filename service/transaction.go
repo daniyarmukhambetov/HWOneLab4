@@ -10,17 +10,15 @@ type Transaction struct {
 }
 
 func (s *Transaction) GetList() ([]*models.Transaction, error) {
-	//TODO implement me
-	panic("implement me")
+	return s.Repo.Transaction.GetList()
 }
 
 func (s *Transaction) Get(i int64) (*models.Transaction, error) {
-	//TODO implement me
-	panic("implement me")
+	return s.Get(i)
 }
 
 func (s *Transaction) Create(t *models.Transaction) (*models.Transaction, error) {
-	panic("implement me")
+	return s.Create(t)
 }
 
 func NewTransaction(repo *storage.Storage) *Transaction {

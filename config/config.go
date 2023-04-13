@@ -4,10 +4,6 @@ import (
 	"github.com/caarlos0/env/v6"
 )
 
-// ENV - переменные окружения
-// FILE - файлы
-// Флаги - переменные из командной стркои
-// внешние сервисы - Hashicorp Vault
 type Config struct {
 	HTTP     HTTP
 	Port     int    `env:"PORT" envDefault:"8080"`
