@@ -1,6 +1,7 @@
 package service
 
 import (
+	"OneLab2/dto"
 	"OneLab2/models"
 	"OneLab2/storage"
 )
@@ -14,7 +15,7 @@ func NewService(repo *storage.Storage) (*Service, error) {
 }
 
 type ITransaction interface {
-	GetList() ([]*models.Transaction, error)
+	GetList() ([]dto.BookTransaction, error)
 	Get(int64) (*models.Transaction, error)
 	Create(*models.Transaction) (*models.Transaction, error)
 }

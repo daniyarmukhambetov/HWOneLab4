@@ -15,7 +15,7 @@ func NewTransaction(db *gorm.DB) *Transaction {
 }
 
 func (r *Transaction) GetList() ([]*models.Transaction, error) {
-	sql := "SELECT * FROM transactions"
+	sql := "SELECT * FROM transactions ORDER BY book_name;"
 	var tr []*models.Transaction
 	tx := r.db.Raw(sql).Scan(&tr)
 	if tx.Error != nil {
@@ -36,9 +36,10 @@ func (r *Transaction) Get(i int64) (*models.Transaction, error) {
 
 func (r *Transaction) Create(t *models.Transaction) (*models.Transaction, error) {
 	sql := fmt.Sprintf(
-		"INSERT INTO transactions (user_id, amount) VALUES (%d, %v)",
+		"INSERT INTO transactions (user_id, amount, book_name) VALUES (%d, %v, %s)",
 		t.UserID,
 		t.Amount,
+		t.BookName,
 	)
 	var tr *models.Transaction
 	err := r.db.Raw(sql).Scan(&tr).Error

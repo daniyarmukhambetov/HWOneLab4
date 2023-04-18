@@ -5,4 +5,5 @@ type Transaction struct {
 	UserID    int
 	Amount    float64
 	CreatedAt string
+	BookName  string
 }

@@ -6,7 +6,7 @@ import (
 
 type Config struct {
 	HTTP     HTTP
-	Port     int    `env:"PORT" envDefault:"8080"`
+	Port     int    `env:"PORT" envDefault:"8000"`
 	Database string `env:"DATABASE" envDefault:"easdasd"`
 	JWTKey   string `env:"JWT_KEY" evnDefault:"supersecret"`
 	PgURL    string `env:"PG_URL" envDefault:"user=admin password=password dbname=onelab2 sslmode=disable host=localhost port=5432" `
