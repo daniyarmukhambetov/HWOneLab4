@@ -43,7 +43,7 @@ func (s *Transaction) Get(i int64) (*models.Transaction, error) {
 }
 
 func (s *Transaction) Create(t *models.Transaction) (*models.Transaction, error) {
-	return s.Create(t)
+	return s.Repo.Transaction.Create(t)
 }
 
 func NewTransaction(repo *storage.Storage) *Transaction {

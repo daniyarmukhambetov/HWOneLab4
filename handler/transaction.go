@@ -1,7 +1,9 @@
 package handler
 
 import (
+	"OneLab2/models"
 	"OneLab2/service"
+	"fmt"
 	"github.com/labstack/echo/v4"
 	"net/http"
 )
@@ -23,7 +25,21 @@ func (h *Transaction) GetList(ctx echo.Context) error {
 }
 
 func (h *Transaction) Create(ctx echo.Context) error {
-	panic("implement me")
+	var transaction models.TransactionIn
+	err := ctx.Bind(&transaction)
+	fmt.Println(transaction)
+	if err != nil {
+		return err
+	}
+	res, err := h.service.Transaction.Create(&models.Transaction{
+		UserID:   transaction.UserID,
+		Amount:   transaction.Amount,
+		BookName: transaction.BookName,
+	})
+	if err != nil {
+		return err
+	}
+	return ctx.JSON(http.StatusCreated, res)
 }
 
 func (h *Transaction) Get(ctx echo.Context) error {

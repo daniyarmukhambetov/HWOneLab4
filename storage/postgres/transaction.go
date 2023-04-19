@@ -36,7 +36,7 @@ func (r *Transaction) Get(i int64) (*models.Transaction, error) {
 
 func (r *Transaction) Create(t *models.Transaction) (*models.Transaction, error) {
 	sql := fmt.Sprintf(
-		"INSERT INTO transactions (user_id, amount, book_name) VALUES (%d, %v, %s)",
+		"INSERT INTO transactions (user_id, amount, book_name) VALUES (%d, %v, '%s')",
 		t.UserID,
 		t.Amount,
 		t.BookName,

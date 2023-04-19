@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"github.com/caarlos0/env/v6"
 )
 
@@ -13,9 +14,8 @@ type Config struct {
 }
 
 type HTTP struct {
-	PORT   int
-	URL    string
-	UseSSL bool
+	URL    string `env:"URL" envDefault:"127.0.0.1"`
+	UseSSL bool   `env:"SSL" envDefault:"false"`
 }
 
 func New() (*Config, error) {
@@ -23,5 +23,6 @@ func New() (*Config, error) {
 	if err := env.Parse(&cfg); err != nil {
 		return nil, err
 	}
+	fmt.Println(cfg)
 	return &cfg, nil
 }
